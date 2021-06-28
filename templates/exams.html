@@ -1,0 +1,243 @@
+Conduct Exam 
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div id="questionPaper" style="padding: 10px;">
+            <div id="paperCode" style="text-align: center;">
+                E <input type="text">
+                <button onclick="deleteExam(this)" style="float: right;"> Delete Exam </button>
+            </div>
+            <div id="questions" style="margin-top: 10px;">
+                <div id="q1" style="padding: 10px; box-shadow: 5px 5px 5px 5px grey;">
+                    <label> Q1 : </label>
+                    <textarea rows="2" cols="150"></textarea>
+                    <div style="margin-top: 5px;" >
+
+                        <!--<input type="radio"  name="q1" value="HTML">-->
+                        <label >a.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="CSS">-->
+                        <label >b.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="JavaScript">-->
+                        <label >c.</label><input type="text"> <br>
+
+                        <!--<input type="radio" name="q1" value="JavaScript">-->
+                        <label >d.</label><input type="text"> <br><br>
+                        <div>
+                            <label >Answer : </label><input type="text">
+                            
+                        </div>
+
+                    </div> 
+                </div>
+
+                <div id="q2" style="padding: 10px; box-shadow: 5px 5px 5px 5px grey;">
+                    <label> Q2 : </label>
+                    <textarea rows="2" cols="150"></textarea>
+                    <div style="margin-top: 5px;">
+                        <!--<input type="radio"  name="q1" value="HTML">-->
+                        <label >a.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="CSS">-->
+                        <label >b.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="JavaScript">-->
+                        <label >c.</label><input type="text"> <br>
+
+                        <!--<input type="radio" name="q1" value="JavaScript">-->
+                        <label >d.</label><input type="text"> <br><br>
+                        <div>
+                            <label >Answer : </label><input type="text">
+                            
+                        </div>
+
+                    </div> 
+                </div>
+
+                <div id="q3" style="padding: 10px; box-shadow: 5px 5px 5px 5px grey;">
+                    <label> Q3 : </label>
+                    <textarea rows="2" cols="150"></textarea>
+                    <div style="margin-top: 5px;">
+                        <!--<input type="radio"  name="q1" value="HTML">-->
+                        <label >a.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="CSS">-->
+                        <label >b.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="JavaScript">-->
+                        <label >c.</label><input type="text"> <br>
+
+                        <!--<input type="radio" name="q1" value="JavaScript">-->
+                        <label >d.</label><input type="text"> <br><br>
+                        <div>
+                            <label >Answer : </label><input type="text">
+                            
+                        </div>
+
+                    </div> 
+                </div>
+
+                <div id="q4" style="padding: 10px; box-shadow: 5px 5px 5px 5px grey;">
+                    <label> Q4 : </label>
+                    <textarea rows="2" cols="150"></textarea>
+                    <div style="margin-top: 5px;">
+                        <!--<input type="radio"  name="q1" value="HTML">-->
+                        <label >a.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="CSS">-->
+                        <label >b.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="JavaScript">-->
+                        <label >c.</label><input type="text"> <br>
+
+                        <!--<input type="radio" name="q1" value="JavaScript">-->
+                        <label >d.</label><input type="text"> <br><br>
+                        <div>
+                            <label >Answer : </label><input type="text">
+                            
+                        </div>
+
+                    </div> 
+                </div>
+
+                <div id="q5" style="padding: 10px; box-shadow: 5px 5px 5px 5px grey;">
+                    <label> Q5 : </label>
+                    <textarea rows="2" cols="150"></textarea>
+                    <div style="margin-top: 5px;">
+                        <!--<input type="radio"  name="q1" value="HTML">-->
+                        <label >a.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="CSS">-->
+                        <label >b.</label><input type="text"> <br>
+
+                        <!--<input type="radio"  name="q1" value="JavaScript">-->
+                        <label >c.</label><input type="text"> <br>
+
+                        <!--<input type="radio" name="q1" value="JavaScript">-->
+                        <label >d.</label><input type="text"> <br><br>
+                        <div>
+                            <label >Answer : </label><input type="text">
+                            
+                        </div>
+
+                    </div> 
+                </div>
+
+                <div style="padding: 10px;">
+                    <div onclick="savequestion(this)" style="color: white;background-color:green;border-radius:10px;cursor:pointer;padding:5px;display:block;text-align:center;"> S A V E </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </body>
+    <script>
+        
+        function savequestion(e){
+            debugger;
+            
+            
+            var questions=[]; //sessionStorage.setItem('questions',questions) ;
+            var options_a = [];
+            var options_b=[];
+            var options_c=[];
+            var options_d=[];
+            var answers=[];
+            var ecode = e.parentElement.parentElement.parentElement.getElementsByTagName('input')[0].value;
+
+            if(ecode.length==0){
+                alert("E-Code cannot be empty")
+            }
+            else{
+                var question1 = e.parentElement.parentElement.getElementsByTagName('textarea')[0].value;
+                var question2 = e.parentElement.parentElement.getElementsByTagName('textarea')[1].value;
+                var question3 = e.parentElement.parentElement.getElementsByTagName('textarea')[2].value;
+                var question4 = e.parentElement.parentElement.getElementsByTagName('textarea')[3].value;
+                var question5 = e.parentElement.parentElement.getElementsByTagName('textarea')[4].value;
+                questions.push(question1);questions.push(question2);questions.push(question3);questions.push(question4);questions.push(question5);
+                
+                
+                var option_a1 = e.parentElement.parentElement.getElementsByTagName('input')[0].value;
+                var option_a2 = e.parentElement.parentElement.getElementsByTagName('input')[5].value;
+                var option_a3 = e.parentElement.parentElement.getElementsByTagName('input')[10].value;
+                var option_a4 = e.parentElement.parentElement.getElementsByTagName('input')[15].value
+                var option_a5 = e.parentElement.parentElement.getElementsByTagName('input')[20].value
+                options_a.push(option_a1);options_a.push(option_a2);options_a.push(option_a3);options_a.push(option_a4);options_a.push(option_a5);
+                
+                var option_b1 = e.parentElement.parentElement.getElementsByTagName('input')[1].value;
+                var option_b2 = e.parentElement.parentElement.getElementsByTagName('input')[6].value;
+                var option_b3 = e.parentElement.parentElement.getElementsByTagName('input')[11].value;
+                var option_b4 = e.parentElement.parentElement.getElementsByTagName('input')[16].value;
+                var option_b5 = e.parentElement.parentElement.getElementsByTagName('input')[21].value
+                options_b.push(option_b1);options_b.push(option_b2);options_b.push(option_b3);options_b.push(option_b4);options_b.push(option_b5);
+                
+                var option_c1 = e.parentElement.parentElement.getElementsByTagName('input')[2].value;
+                var option_c2 = e.parentElement.parentElement.getElementsByTagName('input')[7].value;
+                var option_c3 = e.parentElement.parentElement.getElementsByTagName('input')[12].value;
+                var option_c4 = e.parentElement.parentElement.getElementsByTagName('input')[17].value;
+                var option_c5 = e.parentElement.parentElement.getElementsByTagName('input')[22].value;
+                options_c.push(option_c1);options_c.push(option_c2);options_c.push(option_c3);options_c.push(option_c4);options_c.push(option_c5);
+                
+                var option_d1 = e.parentElement.parentElement.getElementsByTagName('input')[3].value;
+                var option_d2 = e.parentElement.parentElement.getElementsByTagName('input')[8].value;
+                var option_d3 = e.parentElement.parentElement.getElementsByTagName('input')[13].value;
+                var option_d4 = e.parentElement.parentElement.getElementsByTagName('input')[18].value;
+                var option_d5 = e.parentElement.parentElement.getElementsByTagName('input')[23].value;
+                options_d.push(option_d1);options_d.push(option_d2);options_d.push(option_d3);options_d.push(option_d4);options_d.push(option_d5);
+                
+                var answer1 = e.parentElement.parentElement.getElementsByTagName('input')[4].value;
+                var answer2 = e.parentElement.parentElement.getElementsByTagName('input')[9].value;
+                var answer3 = e.parentElement.parentElement.getElementsByTagName('input')[14].value;
+                var answer4 = e.parentElement.parentElement.getElementsByTagName('input')[19].value;
+                var answer5 = e.parentElement.parentElement.getElementsByTagName('input')[24].value;
+                answers.push(answer1);answers.push(answer2);answers.push(answer3);answers.push(answer4);answers.push(answer5);
+                
+                var examObj={
+                    'questions': questions,
+                    'options_a': options_a,
+                    'options_b': options_b,
+                    'options_c': options_c,
+                    'options_d': options_d,
+                    'answers': answers,
+                    'Ecode': e.parentElement.parentElement.parentElement.getElementsByTagName('input')[0].value,
+                }
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "uploadExam", true);
+                xhttp.send( JSON.stringify(examObj) );
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+            }         
+
+            //e.style.display="none";           
+            
+        }
+
+        function deleteExam(e){
+            debugger;
+            ecode = e.parentElement.getElementsByTagName('input')[0].value;
+            if(ecode.length==0){
+                alert("E-Code cannot be empty");
+            }
+            else{
+                
+                var obj = { 'ecode':ecode }
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", "deleteExam", true);
+                xhttp.send( JSON.stringify(obj) );
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                    }
+                };
+                
+            }
+            
+        }
+    </script>
+</html>

@@ -1,0 +1,102 @@
+<html>
+    <head>
+
+    </head>
+    <body style="padding: 10px;">
+        
+        <div style="background-color: orange;padding:10px;border-radius:10px;cursor:pointer;" onclick="examlistTab()"> Exam List ( click to open / close ) </div>
+        <div id="examList" style="margin-top: 10px;display:block;">
+            {% for i in EcodeList %}
+            <div style="padding: 10px;box-shadow:5px 5px 5px 5px grey;">
+                <table style="width: 100%;text-align:center;">
+                    
+                    <tr>
+                        <td>
+                            <h4> Exam Code </h4>
+                        </td>
+                        <td>
+                            <h4> Attempt </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            
+                            <h4> {{i}} </h4>
+                        </td>
+                        
+                        <td>
+                            <button onclick="attemptExam(this)" target="_blank"> Attempt </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div style="background-color: orange;padding:10px;border-radius:10px;cursor:pointer;margin-top:15px;"> Exam Section </div>
+        <div id="ExamSection" style="padding: 20px; display:block;">
+            Exam Section : 
+            <form action="submitTest" method="POST">
+                {% csrf_token %}
+                
+                <div id="question-replace" style="margin-top: 10px; display:block;">   </div>    
+
+                <div style="padding: 10px;display:none;margin-top:10px;" id="submittestbutton">
+                    <!--<div onclick="submitExam(this)" style="color: white;background-color:green;border-radius:10px;cursor:pointer;padding:5px;display:block;text-align:center;"> S U B M I T - T E S T </div>-->
+                    <input type="submit" value="S U B M I T - T E S T" style="padding: 10px;background-color:green;color:white;font-weight: bold;">
+                </div>
+                
+            </form>
+            
+        </div>
+
+    </body>
+    <script>
+
+        function examlistTab(){
+            debugger;
+            //var section = document.getElementById('examList').style.display;
+            if(document.getElementById('examList').style.display=="none"){
+                document.getElementById('examList').style.display = "block";
+            }
+            else{
+                document.getElementById('examList').style.display = "none";
+            }
+        }
+
+        function attemptExam(e){
+            debugger;
+            var Ecode = (e.parentElement.parentElement.getElementsByTagName('h4')[0].innerHTML).trim();
+
+            var xhttp = new XMLHttpRequest();
+            obj = {
+                'ecode': Ecode,
+            }
+            var result="" ;
+            document.getElementById('examList').style.display = "none";
+            //console.log( JSON.stringify(obj) );
+            xhttp.open("POST", "attemptExam", true);
+            xhttp.send( JSON.stringify(obj) );
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    //alert(this.responseText);
+                    var data = JSON.parse( this.responseText );
+                    for(var i=0;i<data.examList.length;i++) {
+                        var question = "<label> Q "+(i+1)+" : </label><label> "+( data.examList[i].questions )+" </label><br>";
+                        var option_a = "<input type='radio' name='question"+(i+1)+"' value='"+( data.examList[i].options_a )+"'><label >"+(data.examList[i].options_a)+"</label><br>" ;
+                        var option_b = "<input type='radio' name='question"+(i+1)+"' value='"+( data.examList[i].options_b )+"'><label >"+( data.examList[i].options_b )+"</label><br>" ;
+                        var option_c = "<input type='radio' name='question"+(i+1)+"' value='"+( data.examList[i].options_c )+"'><label >"+(data.examList[i].options_c)+"</label><br>" ;
+                        var option_d = "<input type='radio' name='question"+(i+1)+"' value='"+(data.examList[i].options_d )+"'><label >"+( data.examList[i].options_d )+"</label>";
+                        var que = "<div style='padding: 10px; box-shadow: 5px 5px 5px 5px grey;'><div style='margin-top: 5px;' >"+question+option_a+option_b+option_c+option_d+"</div></div>" ;
+                        result = result + que ;
+                    }
+
+                    document.getElementById('submittestbutton').style.display="block";
+                    document.getElementById('question-replace').innerHTML = result ;
+                }
+            };
+        }
+
+        
+    </script>
+</html>

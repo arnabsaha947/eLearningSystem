@@ -1,0 +1,48 @@
+<html>
+    <head>
+
+    </head>
+    <body onload="getTeacherTutorial()">
+
+        <div style="background:#1694EA;text-align:center;"> 
+            <div style="padding:5px;">
+                <img src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" style="height:100px;width:100px;border-radius:50%" > 
+            </div>
+            <div style="color:white;padding:5px;">
+                <label> Student Tutorial's Page </label> 
+            </div>
+        </div>    
+
+        <div id="studentTutorials" style="padding: 10px;"> sdadas </div>
+    </body>
+
+    <script>
+
+        function getTeacherTutorial(){
+            debugger;
+            result="";
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", "getTeachersTutorial", true);
+            xhttp.send();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                    data = JSON.parse( this.responseText) ;
+                    for(var i=0;i<data.data.length;i++){
+                        result1 = "<td><label> Description : </label><br><br><label>"+(data.data[i].description)+"</label></td>"
+                        result2 = "<td><label> Link : </label><br><br><a href='"+(data.data[i].link)+"' target='_blank'>"+(data.data[i].link)+" </a></td>"
+                        result3 = "<td><label> T-Code : </label><br><br><label>"+(data.data[i].code)+"</label></td>"
+                        result4 = "<td><label> BY : </label><br><br><label>"+(data.data[i].email)+"</label></td>"
+                        result5 = "<td><button onclick='deleteTutorial()'> Delete </button></td>"
+                        result = result+"<div  style='margin-top:5px;box-shadow: 5px 5px 5px 5px grey;padding:10px;margin-top:20px;'><table style='width: 100%;text-align:center;'><tr>"+result1+result2+result3+"</tr></table></div>"
+                    }
+                    document.getElementById('studentTutorials').innerHTML = result;
+    
+               }
+            };
+        }
+    </script>
+
+</html>
+
+
+

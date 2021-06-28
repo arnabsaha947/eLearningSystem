@@ -1,0 +1,54 @@
+
+<!-- Name , phone, email, ongoing-education,dateOfBirth -->
+<html>
+    <head>
+
+    </head>
+    <body>
+        <div style="background-color:white;padding:15px;">
+
+            <a href="/" style="padding:10px;font-size:25px;">Home</a>
+            <a href="about" style="padding:10px;font-size:25px;">About</a>
+            <a href="contacts" style="padding:10px;font-size:25px;">Contact Us</a>
+            <a href="registration" style="float:right;padding:10px;font-size:25px;">Registration</a>
+            <a href="login" style="float:right;padding:10px;font-size:25px;">Login</a>
+            
+        </div>
+        <hr style="height: 1px;background-color:grey;">
+        <div style="background-image: url(https://img.freepik.com/free-photo/abstract-surface-wood-texture-background_74190-12071.jpg?size=626&ext=jpg&ga=GA1.2.1419420958.1622851200);">
+            <form method="POST" action="registered" style="padding: 10px; box-shadow:10px 10px 10px 10px grey;">
+                {% csrf_token %}
+                
+                <h3>Name</h3>
+                <input type="text" placeholder="Name" name="name">
+    
+                <h3>Phone</h3>
+                <input type="text" placeholder="900729****" name="phone">
+    
+                <h3>Email</h3>
+                <input type="text" placeholder="abc@gmail.com" name="email">
+    
+                <h3>Proffesion / Education</h3>
+                <input type="text" placeholder=" What You Do " name="wyd">
+    
+                <h3>Date Of Birth</h3>
+                <input type="date" placeholder="27/05/98" name="dob">
+    
+                <h3>Account Type</h3>
+                <select name="accnttype" >
+                    <option value="teacher">Teacher</option>
+                    <option value="student">Student</option>
+                    
+                </select>
+    
+                <h3>Password</h3>
+                <input type="password" placeholder="*******" name="password">
+    
+                <br><br><br>
+    
+                <input type="submit" >
+            </form>
+        </div>
+        
+    </body>
+</html>
